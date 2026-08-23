@@ -57,7 +57,3 @@ drawn behind the notes in the corresponding memory PCA panel. Reciprocal directe
 links share one visual line to keep the map legible; the JSON retains every directed
 link.
 
-The JSON export contains full benchmark questions and memory-note text derived from
-the research data. Do not deploy it publicly until the project's data-redistribution
-review permits publication. A redacted exporter mode should be used if only PCA
-positions, anonymous IDs, and tool outcomes are cleared for public release.
