@@ -1,4 +1,6 @@
-# Static Search Map
+# Static version of the results on amem memory based tool retrieval
+
+[deployed here](https://sepaww.github.io/amem-memory-based-tool-retrieval-static-webui/)
 
 This directory is a backend-free GitHub Pages version of the Search Map. It is
 separate from the Flask Web UI under `src/memory_tool_retrieval/web/`.
