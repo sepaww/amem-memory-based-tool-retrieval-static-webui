@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AMEM memory based tool retrieval</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div>
+        <h1>AMEM memory based tool retrieval</h1>
+        <p>Precomputed PCA and retrieval results from the no-evolution and evolved memory snapshots. Data gained from a tool ecosystem built on top of Amazon reviews 2023 dataset. </p>
+      </div>
+      <span class="static-badge">Static release</span>
+    </header>
+
+    <section class="controls">
+      <label>Available precomputed memory setting
+        <select id="variantSelect"><option>Loading available settings…</option></select>
+      </label>
+      <label>PCA dot outcome
+        <select id="outcomeMethodSelect">
+          <option value="memory">Selected memory setting</option>
+          <option value="question">Question → Question baseline</option>
+        </select>
+      </label>
+      <div class="control-note" id="configurationText">Loading configuration…</div>
+    </section>
+
+    <section class="performance-overview" aria-live="polite">
+      <div class="performance-head">
+        <div><h2>Overall performance</h2><p>Coverage and macro F1 use the top six tools; cover rank uses the full produced ranking.</p></div>
+      </div>
+      <div class="performance-grid" id="performanceGrid"></div>
+    </section>
+
+    <section class="layout">
+      <div class="sidebar-stack">
+        <aside class="sidebar">
+          <h2>Selection</h2>
+          <div class="meta" id="statusText">Loading static data…</div>
+          <div class="error" id="errorBox"></div>
+          <div class="retrieval-summary" id="retrievalSummary" aria-live="polite"></div>
+          <div class="detail-box" id="selectionDetail">Click a note or question point.</div>
+          <div id="questionMethodFields">
+            <h2 class="section-heading">Question→Question top 10</h2>
+            <div class="tool-list" id="questionTools"></div>
+            <h2 class="section-heading">Memory retrieval top 10</h2>
+            <div class="tool-list" id="memoryTools"></div>
+          </div>
+          <div id="memoryNoteFields" hidden>
+            <h2 class="section-heading">Tools used in this memory note</h2>
+            <div class="tool-list" id="noteTools"></div>
+          </div>
+        </aside>
+
+        <aside class="labels-card" aria-labelledby="labelsHeading">
+          <h2 id="labelsHeading">Labels</h2>
+          <div class="outcome-legend" id="outcomeLegend"></div>
+          <div class="legend">
+            <span><i class="swatch correct"></i>Required tool</span>
+            <span><i class="swatch question"></i>Question neighbour</span>
+            <span><i class="swatch memory"></i>Memory neighbour</span>
+            <span><i class="swatch connection"></i>Note connection</span>
+          </div>
+        </aside>
+      </div>
+
+      <section class="map-grid">
+        <article class="map-card">
+          <div class="map-head"><h2>Memory Notes</h2><button data-reset="memory">Reset</button></div>
+          <div class="meta" id="memoryMeta">–</div>
+          <svg class="plot" id="memoryPlot" viewBox="0 0 1000 700"></svg>
+        </article>
+        <article class="map-card">
+          <div class="map-head"><h2>Training Questions</h2><button data-reset="train">Reset</button></div>
+          <div class="meta" id="trainMeta">–</div>
+          <svg class="plot" id="trainPlot" viewBox="0 0 1000 700"></svg>
+        </article>
+        <article class="map-card">
+          <div class="map-head"><h2>In-domain Test Questions</h2><button data-reset="test">Reset</button></div>
+          <div class="meta" id="testMeta">–</div>
+          <svg class="plot" id="testPlot" viewBox="0 0 1000 700"></svg>
+        </article>
+        <article class="map-card">
+          <div class="map-head"><h2>OOD200 Questions</h2><button data-reset="ood">Reset</button></div>
+          <div class="meta" id="oodMeta">–</div>
+          <svg class="plot" id="oodPlot" viewBox="0 0 1000 700"></svg>
+        </article>
+      </section>
+    </section>
+  </main>
+  <script src="./app.js"></script>
+</body>
+</html>
